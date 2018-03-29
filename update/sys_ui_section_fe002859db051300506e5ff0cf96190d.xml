@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_section caption="" section_id="fe002859db051300506e5ff0cf96190d" sys_domain="global" table="x_197131_sensiple_notification_keywords" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>keywords</element>
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-03-27 11:13:41</sys_created_on>
+            <sys_id>4c929ce6db811300506e5ff0cf961979</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_197131_sensiple_notification_keywords" sys_domain="global" view="Default view">fe002859db051300506e5ff0cf96190d</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-03-27 11:13:41</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>email_address1</element>
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-03-27 11:13:41</sys_created_on>
+            <sys_id>cc929ce6db811300506e5ff0cf961979</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_197131_sensiple_notification_keywords" sys_domain="global" view="Default view">fe002859db051300506e5ff0cf96190d</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-03-27 11:13:41</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>email_address2</element>
+            <position>2</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-03-27 11:13:41</sys_created_on>
+            <sys_id>40929ce6db811300506e5ff0cf96197a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_197131_sensiple_notification_keywords" sys_domain="global" view="Default view">fe002859db051300506e5ff0cf96190d</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-03-27 11:13:41</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>email_address3</element>
+            <position>3</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-03-27 11:13:41</sys_created_on>
+            <sys_id>c0929ce6db811300506e5ff0cf96197a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_197131_sensiple_notification_keywords" sys_domain="global" view="Default view">fe002859db051300506e5ff0cf96190d</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-03-27 11:13:41</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_197131_sensiple_notification_keywords</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-03-23 15:00:11</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>fe002859db051300506e5ff0cf96190d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_197131_sensiple_notification_keywords</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="sensiple_app" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="sensiple_app">496fd019db051300506e5ff0cf961935</sys_scope>
+            <sys_update_name>sys_ui_section_fe002859db051300506e5ff0cf96190d</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-03-23 15:00:11</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

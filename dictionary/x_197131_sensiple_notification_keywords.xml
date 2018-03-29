@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="notification_keywords" max_length="40" name="x_197131_sensiple_notification_keywords" type="collection">
+        <element label="Email address1" mandatory="true" max_length="50" name="email_address1" type="email"/>
+        <element label="Email address2" max_length="50" name="email_address2" type="email"/>
+        <element label="Email address3" max_length="50" name="email_address3" type="email"/>
+        <element display="true" label="Keywords" mandatory="true" max_length="100" name="keywords" type="string"/>
+    </element>
+</database>
