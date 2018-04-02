@@ -28,50 +28,70 @@
         <rest_service_text/>
         <rest_variables/>
         <role_conditions/>
-        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
-	
-	var notificationGR = new GlideRecord('x_197131_sensiple_notification_keywords');
-	notificationGR.query();
-	var temp=0;
-	
-	var shortDescription = current.getValue('description');
-	//var description = current.getValue('description');
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+
+	//Query the notification_keywords table
+	var notificationKeywordRecord = new GlideRecord('x_197131_sensiple_notification_keywords');
+	notificationKeywordRecord.query();
+
+	// Email addresses
+
+	//var emailAddress1 = 
+	//var emailAddress2 = 
+	//var emailAddress3 = 
+
+	var containsKeywords = 0;
 	var incidentNumber = current.getValue('number');
-	var lwc_srtDisp =  shortDescription.toLowerCase();
-	var splitedDiscription = lwc_srtDisp.split(/[ ,]+/);
-	
-	while(notificationGR.next()){
-		var keywords = notificationGR.getValue('keywords');	
-		var lwc_kyWrds = keywords.toLowerCase();
-		var words = lwc_kyWrds.split(/[ ,]+/);
-		for(var i = 0; i < words.length; i++){
-			for(var j = 0;  j < splitedDiscription.length; j++){
-				if(words[i]==splitedDiscription[j]){					
-					temp=1;
+	var description = current.getValue('description').replace(/[^\w\s]/gi, '').toLowerCase();
+	var shortDescription = current.getValue('short_description').replace(/[^\w\s]/gi, '').toLowerCase();
+	var splittedShortDescription = description.split(/[ ,]+/);
+	var splittedDescription = shortDescription.split(/[ ,]+/);
+
+	while (notificationKeywordRecord.next()) {
+		var keywords = notificationKeywordRecord.getValue('keywords').toLowerCase();
+		var splittedWords = keywords.split(/[ ,]+/);
+
+
+		for (var x = 0; x < splittedWords.length; x++) {
+			for (var y = 0; y < splittedShortDescription.length; y++) {
+				if (splittedWords[x] == splittedShortDescription[y]) {
+					containsKeywords = 1;
+					break;
+				}
+			}
+		}
+		
+		if (containsKeywords != 1) {
+
+			for (var i = 0; i < splittedWords.length; i++) {
+				for (var j = 0; j < splittedDescription.length; j++) {
+					if (splittedWords[i] == splittedDescription[j]) {
+						containsKeywords = 1;
+						break;
+					}
 				}
 			}
 		}
 	}
-	
+
 	var notificationGR1 = new GlideRecord('x_197131_sensiple_notification_keywords');
 	notificationGR1.query();
-		while(notificationGR1.next()){
-			if(temp!=0){
-				
+	while (notificationGR1.next()) {
+		if (containsKeywords != 0) {
 			gs.eventQueue('x_197131_sensiple.sensiple.ticket.regist',
-			current,notificationGR1.getValue('email_address1'),incidentNumber );
-				if(notificationGR1.getValue('email_address2')){
-					gs.eventQueue('x_197131_sensiple.sensiple.ticket.regist',
-			current,notificationGR1.getValue('email_address2'),incidentNumber );
-				}
-				if(notificationGR1.getValue('email_address3')){
-					gs.eventQueue('x_197131_sensiple.sensiple.ticket.regist',
-			current,notificationGR1.getValue('email_address3'),incidentNumber );
-				}
-				
-		}	
+			current, notificationGR1.getValue('email_address1'), incidentNumber);
+			
+			if (notificationGR1.getValue('email_address2')) {
+				gs.eventQueue('x_197131_sensiple.sensiple.ticket.regist',
+					current, notificationGR1.getValue('email_address2'), incidentNumber);
+			}
+			if (notificationGR1.getValue('email_address3')) {
+				gs.eventQueue('x_197131_sensiple.sensiple.ticket.regist',
+					current, notificationGR1.getValue('email_address3'), incidentNumber);
+			}
+		}
 	}
-	
+
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -79,7 +99,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>f8716c99db051300506e5ff0cf96196a</sys_id>
-        <sys_mod_count>50</sys_mod_count>
+        <sys_mod_count>80</sys_mod_count>
         <sys_name>sensiple_ticket_notification</sys_name>
         <sys_overrides/>
         <sys_package display_value="sensiple_app" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
@@ -87,7 +107,7 @@
         <sys_scope display_value="sensiple_app">496fd019db051300506e5ff0cf961935</sys_scope>
         <sys_update_name>sys_script_f8716c99db051300506e5ff0cf96196a</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-03-29 13:51:33</sys_updated_on>
+        <sys_updated_on>2018-04-02 08:06:15</sys_updated_on>
         <template/>
         <when>async</when>
     </sys_script>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>incident_script_1</name>
+        <new_lines_to_html>false</new_lines_to_html>
+        <script><![CDATA[if(sys_updated_on== 1)
+ 
+ template.print("Updated.");
+ 
+ 
+else
+ 
+template.print("Created.");]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-03-30 10:39:52</sys_created_on>
+        <sys_id>6597abd7db0d1300506e5ff0cf9619a9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>incident_script_1</sys_name>
+        <sys_package display_value="sensiple_app" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="sensiple_app">496fd019db051300506e5ff0cf961935</sys_scope>
+        <sys_update_name>sys_script_email_6597abd7db0d1300506e5ff0cf9619a9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-03-30 10:39:52</sys_updated_on>
+    </sys_script_email>
+</record_update>
