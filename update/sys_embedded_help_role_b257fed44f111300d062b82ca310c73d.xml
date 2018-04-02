@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_embedded_help_role">
+    <sys_embedded_help_role action="INSERT_OR_UPDATE">
+        <order>1000</order>
+        <role display_value="x_197131_sensiple.user" name="x_197131_sensiple.user">d96f9459db051300506e5ff0cf96190a</role>
+        <sys_class_name>sys_embedded_help_role</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2018-04-02 09:43:04</sys_created_on>
+        <sys_id>b257fed44f111300d062b82ca310c73d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>d96f9459db051300506e5ff0cf96190a</sys_name>
+        <sys_package display_value="sensiple_app" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="sensiple_app">496fd019db051300506e5ff0cf961935</sys_scope>
+        <sys_update_name>sys_embedded_help_role_b257fed44f111300d062b82ca310c73d</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2018-04-02 09:43:04</sys_updated_on>
+    </sys_embedded_help_role>
+</record_update>

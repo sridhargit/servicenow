@@ -6,31 +6,28 @@
         <script><![CDATA[(function runMailScript(/* GlideRecord */ current, /* TemplatePrinter */ template,
           /* Optional EmailOutbound */ email, /* Optional GlideRecord */ email_action,
           /* Optional GlideRecord */ event) {
-var incidentGR = new GlideRecord('incident');
+    var incidentGR = new GlideRecord('incident');
 	incidentGR.initialize();
 	var updates = current.sys_mod_count;	
-    // while(incidentGR.next()){
-		 //var updates = current.getValue('sys_updated_on');
-		 if(updates!=0){
-			 template.print('<span style="font-family:verdana;">Updated.</span>');
+		 if(updates != 0){
+			 template.print('<span style="font-family:verdana;"> updated.</span>');
 		 }
 		 else{
-			 template.print('<span style="font-family:verdana;"> Created.</span>');
+			 template.print('<span style="font-family:verdana;"> created.</span>');
 		 }
-	// }   
 
 })(current, template, email, email_action, event);]]></script>
         <sys_class_name>sys_script_email</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-03-30 10:49:05</sys_created_on>
         <sys_id>2ed72f9bdb0d1300506e5ff0cf9619fc</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_name>notification_script_sens</sys_name>
         <sys_package display_value="sensiple_app" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
         <sys_policy/>
         <sys_scope display_value="sensiple_app">496fd019db051300506e5ff0cf961935</sys_scope>
         <sys_update_name>sys_script_email_2ed72f9bdb0d1300506e5ff0cf9619fc</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-03-30 11:54:53</sys_updated_on>
+        <sys_updated_on>2018-04-02 09:54:23</sys_updated_on>
     </sys_script_email>
 </record_update>
