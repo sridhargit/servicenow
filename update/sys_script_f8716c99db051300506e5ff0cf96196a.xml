@@ -31,8 +31,7 @@
         <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
 
 	//Query the notification_keywords table
-	var notificationKeywordRecord = new GlideRecord('x_197131_sensiple_notification_keywords');
-	notificationKeywordRecord.query();
+	
 
 	// Email addresses
 	var emailAddress1;
@@ -40,38 +39,44 @@
 	var emailAddress3;
 	var emailAddresses;
 	var keyword;
-	
+	var priority1;
+	var priorities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
 	//Queue name
 	var queueName = 'x_197131_sensiple.sensiple.ticket.regist';
 
 	var isNotify = false;
 	var incidentNumber = current.getValue('number');
-	var description = current.getValue('description').replace(/[^\w\s]/gi, '').toLowerCase();
-	var shortDescription = current.getValue('short_description').replace(/[^\w\s]/gi, '').toLowerCase();
+	var description = current.getValue('description').replace(/[^\w\s]/gi, '').toLowerCase();
+	var shortDescription = current.getValue('short_description').replace(/[^\w\s]/gi, '').toLowerCase();
 	var splittedDescription = description.split(/[ ,]+/);
 	var splittedShortDescription = shortDescription.split(/[ ,]+/);
-
+	
+	for (var a = 0; a < priorities.length; a++) {
+	var notificationKeywordRecord = new GlideRecord('x_197131_sensiple_notification_keywords');
+	notificationKeywordRecord.query();
 	while (notificationKeywordRecord.next()) {
-		
-		emailAddress1 = notificationKeywordRecord.getValue('email_address1');
-	    emailAddress2 = notificationKeywordRecord.getValue('email_address2');
-		emailAddress3 = notificationKeywordRecord.getValue('email_address3');
-		emailAddresses = emailAddress1+", "+emailAddress2+", "+emailAddress3;
-		
+		var priority = notificationKeywordRecord.getValue('priority');
+		if (priorities[a] == priority) {
+
 		var keywords = notificationKeywordRecord.getValue('keywords').toLowerCase();
 		var splittedWords = keywords.split(/[ ,]+/);
-
 
 		for (var x = 0; x < splittedWords.length; x++) {
 			for (var y = 0; y < splittedShortDescription.length; y++) {
 				if (splittedWords[x] == splittedShortDescription[y]) {
 					isNotify = true;
 					keyword = splittedWords[x];
+					priority1 = priority;
+					emailAddress1 = notificationKeywordRecord.getValue('email_address1');
+					emailAddress2 = notificationKeywordRecord.getValue('email_address2');
+					emailAddress3 = notificationKeywordRecord.getValue('email_address3');
+					emailAddresses = emailAddress1 + ", " + emailAddress2 + ", " + emailAddress3;
 					break;
 				}
 			}
 		}
-		
+
 		if (!isNotify) {
 
 			for (var i = 0; i < splittedWords.length; i++) {
@@ -79,37 +84,40 @@
 					if (splittedWords[i] == splittedDescription[j]) {
 						isNotify = true;
 						keyword = splittedWords[i];
+						priority1 = priority;
+						emailAddress1 = notificationKeywordRecord.getValue('email_address1');
+						emailAddress2 = notificationKeywordRecord.getValue('email_address2');
+						emailAddress3 = notificationKeywordRecord.getValue('email_address3');
+						emailAddresses = emailAddress1 + ", " + emailAddress2 + ", " + emailAddress3;
 						break;
 					}
 				}
 			}
 		}
 	}
+	}
+	}
 
-	// var notificationGR1 = new GlideRecord('x_197131_sensiple_notification_keywords');
-	// notificationGR1.query();
-	//while (notificationGR1.next()) {
-	
-		if (isNotify) {
-			
-			var notificationLogs = new GlideRecord('x_197131_sensiple_notificationlogs'); 
-			notificationLogs.incident_number = incidentNumber;
-			notificationLogs.email_addresses = emailAddresses;
-			notificationLogs.short_description = current.getValue('short_description');
-			notificationLogs.keywords = keyword;
-			notificationLogs.caller_id = current.getValue('caller_id');
-			notificationLogs.insert();
-			
-			gs.eventQueue(queueName,current, emailAddress1, incidentNumber);
-		
-			if (emailAddress2) {
-				gs.eventQueue(queueName,current, emailAddress2, incidentNumber);
-			}
-			if (emailAddress3) {
-				gs.eventQueue(queueName,current, emailAddress3, incidentNumber);
-			}
+	if (isNotify) {
+
+		var notificationLogs = new GlideRecord('x_197131_sensiple_notificationlogs');
+		notificationLogs.incident_number = incidentNumber;
+		notificationLogs.email_addresses = emailAddresses;
+		notificationLogs.short_description = current.getValue('short_description');
+		notificationLogs.keywords = keyword;
+		notificationLogs.caller_id = current.getValue('caller_id');
+		notificationLogs.priority = priority1;
+		notificationLogs.insert();
+
+		gs.eventQueue(queueName, current, emailAddress1, incidentNumber);
+
+		if (emailAddress2) {
+			gs.eventQueue(queueName, current, emailAddress2, incidentNumber);
 		}
-	//}
+		if (emailAddress3) {
+			gs.eventQueue(queueName, current, emailAddress3, incidentNumber);
+		}
+	}
 
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
@@ -118,7 +126,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>f8716c99db051300506e5ff0cf96196a</sys_id>
-        <sys_mod_count>87</sys_mod_count>
+        <sys_mod_count>110</sys_mod_count>
         <sys_name>TicketNotificationFilter</sys_name>
         <sys_overrides/>
         <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
@@ -126,7 +134,7 @@
         <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
         <sys_update_name>sys_script_f8716c99db051300506e5ff0cf96196a</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-03 06:50:29</sys_updated_on>
+        <sys_updated_on>2018-04-06 10:24:13</sys_updated_on>
         <template/>
         <when>async</when>
     </sys_script>

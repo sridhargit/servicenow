@@ -25,9 +25,25 @@
         <order>100</order>
         <script><![CDATA[var gr= new GlideRecord("x_197131_sensiple_notification_keywords");       
 gr.query();   
-gr.setWorkflow(false); //Don't fire Business rule,notifications      
-gr.deleteMultiple();
+gr.setWorkflow(false); //Don't fire Business rule,notifications 
+//var ga = new GlideAjax('validatePriority') ;
+//ga.addParam('sysparm_name','helloWorld');
+//ga.addParam('sysparm_user_name',"current");
+//ga.getXMLWait(); 
+//alert("ga.getAnswer()");
+//gr.deleteMultiple();
 current.insert();
+
+//var validatePriority = Class.create();
+////validatePriority.prototype = Object.extendsObject(AbstractAjaxProcessor, {
+//helloWorld: function() { 
+	//var current = this.getParameter('sysparm_user_name');
+	//current.insert();
+	//return "true"; 
+//}
+//} );
+
+
 ]]></script>
         <show_insert>true</show_insert>
         <show_multiple_update>false</show_multiple_update>
@@ -39,7 +55,7 @@ current.insert();
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>e783182adb811300506e5ff0cf961976</sys_id>
-        <sys_mod_count>29</sys_mod_count>
+        <sys_mod_count>36</sys_mod_count>
         <sys_name>Save</sys_name>
         <sys_overrides display_value="Submit">42ec73550a0a0b3400c97002208d0901</sys_overrides>
         <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
@@ -47,9 +63,9 @@ current.insert();
         <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
         <sys_update_name>sys_ui_action_e783182adb811300506e5ff0cf961976</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-02 09:20:41</sys_updated_on>
+        <sys_updated_on>2018-04-06 05:45:38</sys_updated_on>
         <table>x_197131_sensiple_notification_keywords</table>
-        <ui11_compatible>false</ui11_compatible>
-        <ui16_compatible>false</ui16_compatible>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>true</ui16_compatible>
     </sys_ui_action>
 </record_update>

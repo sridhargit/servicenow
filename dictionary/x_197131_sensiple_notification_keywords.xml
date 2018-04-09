@@ -4,6 +4,23 @@
         <element label="Email address1" mandatory="true" max_length="50" name="email_address1" type="email"/>
         <element label="Email address2" max_length="50" name="email_address2" type="email"/>
         <element label="Email address3" max_length="50" name="email_address3" type="email"/>
-        <element display="true" label="Keywords" mandatory="true" max_length="1000" name="keywords" type="string"/>
+        <element label="Keywords" mandatory="true" max_length="1000" name="keywords" type="string"/>
+        <element choice="3" display="true" label="Priority" mandatory="true" max_length="10" name="priority" type="integer" unique="true">
+            <choice>
+                <element label="Priority 01" value="1"/>
+                <element label="Priority 02" value="2"/>
+                <element label="Priority 03" value="3"/>
+                <element label="Priority 04" value="4"/>
+                <element label="Priority 05" value="5"/>
+                <element label="Priority 06" value="6"/>
+                <element label="Priority 07" value="7"/>
+                <element label="Priority 08" value="8"/>
+                <element label="Priority 09" value="9"/>
+                <element label="Priority 10" value="10"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="priority"/>
+        </index>
     </element>
 </database>
