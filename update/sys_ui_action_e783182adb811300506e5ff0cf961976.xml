@@ -3,7 +3,7 @@
     <sys_ui_action action="INSERT_OR_UPDATE">
         <action_name/>
         <active>true</active>
-        <client>true</client>
+        <client>false</client>
         <comments/>
         <condition/>
         <form_action>true</form_action>
@@ -23,65 +23,34 @@
         <name>Save</name>
         <onclick>onSubmit()</onclick>
         <order>100</order>
-        <script><![CDATA[//function onChange(control, oldValue, newValue, isLoading, isTemplate) {
-function onSubmit() {
-	var URL = "https://dev21654.service-now.com/nav_to.do?uri=%2Fx_197131_sensiple_notification_keywords_list.do%3Fsysparm_clear_stack%3Dtrue";	
-	var emailRegex = "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/";
-	var keywords = g_form.getValue('keywords');
-	var email_address1 = g_form.getValue('email_address1');
-	var email_address2 =  g_form.getValue('email_address2');
-	var email_address3 = g_form.getValue('email_address3');
-	var priority = g_form.getValue('priority');
-	var ga = new GlideAjax('PriorityValidation');
+        <script><![CDATA[	var URL = "https://dev21654.service-now.com/nav_to.do?uri=%2Fx_197131_sensiple_notification_keywords_list.do%3Fsysparm_clear_stack%3Dtrue";	
 	
-	//var flagKeywords;
-	var flagEmail_1 = false;
-	var flagEmail_2 = false;
-	var flagEmail_3 = false;
+	var keywords = current.getValue('keywords');
+	var email_address1 = current.getValue('email_address1');
+	var email_address2 =  current.getValue('email_address2');
+	var email_address3 = current.getValue('email_address3');
+	var priority = current.getValue('priority');
 	
-	if(keywords!="" && priority!="" && emailRegex.test(email_address1)){
-		flagEmail_1 = true;
-	}
-	else if(keywords!="" && priority!="" && emailRegex.test(email_address1) && emailRegex.test(email_address2)){
-		flagEmail_2 = true;
-	}
-	else if(keywords!="" && priority!="" && emailRegex.test(email_address1) && emailRegex.test(email_address2)){
-		flagEmail_3 = true;
-	}
+	var priorityGR = new GlideRecord('x_197131_sensiple_notification_keywords');
+		priorityGR.addQuery('priority', '=', priority);
+		priorityGR.query();
 	
-	if(flagEmail_1==true||flagEmail_2==true||flagEmail_3==true){
+	if (priorityGR.next()) {
 			
-		ga.addParam("sysparm_name", "getFields"); 
-		ga.addParam("priority", priority);
-		ga.addParam("keywords", keywords);
-		ga.addParam("email_address1", email_address1);
-		ga.addParam("email_address2", email_address2);
-		ga.addParam("email_address3", email_address3);
-		ga.getXML(GetResponse); 			
-	}else{
-		g_form.showFieldMsg("keywords", "KeyWord Field should not be empty", "error");
-		g_form.showFieldMsg("email_address1", "Email address1 is mandatory ", "error");
-		g_form.showFieldMsg("priority", "Select the priority", "error");		
-	}
-	
-	function GetResponse(response) {
-	  var answer = response.responseXML.documentElement.getAttribute("answer");
-	  
-		if (answer == "false"){
-			//alert('if');
-			//g_form.showFieldMsg("priority", "Hello World", "error");
-			confirm("Selected priority alraedy contain records, you can not insert new one. Please update the existing one.");
-			top.window.location = URL;
-		}		
-		else{		
-			alert('else');
-			confirm("Data inserted successfully!");
-			top.window.location = URL;
+			gs.addInfoMessage("Selected priority alraedy contain records, you can not insert new one. Please update the existing one.");
+		//action.setRedirectURL(current);
 		}
-	}
+	else{
+			var priorityGRinsert1 = new GlideRecord('x_197131_sensiple_notification_keywords');
+			priorityGRinsert1.keywords = keywords;
+			priorityGRinsert1.email_address1 = email_address1;
+			priorityGRinsert1.email_address2 = email_address2;
+			priorityGRinsert1.email_address3 = email_address3;
+			priorityGRinsert1.priority = priority;
+			priorityGRinsert1.insert();
+			
+		}
 	
-}
-
 
 ]]></script>
         <show_insert>true</show_insert>
@@ -94,7 +63,7 @@ function onSubmit() {
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>e783182adb811300506e5ff0cf961976</sys_id>
-        <sys_mod_count>107</sys_mod_count>
+        <sys_mod_count>112</sys_mod_count>
         <sys_name>Save</sys_name>
         <sys_overrides/>
         <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
@@ -102,7 +71,7 @@ function onSubmit() {
         <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
         <sys_update_name>sys_ui_action_e783182adb811300506e5ff0cf961976</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-10 05:51:57</sys_updated_on>
+        <sys_updated_on>2018-04-10 07:20:03</sys_updated_on>
         <table>x_197131_sensiple_notification_keywords</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>
