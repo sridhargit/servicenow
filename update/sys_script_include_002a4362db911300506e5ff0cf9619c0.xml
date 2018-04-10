@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_197131_sensiple.PriorityValidation</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>PriorityValidation</name>
+        <script><![CDATA[var PriorityValidation = Class.create();
+PriorityValidation.prototype =  Object.extendsObject(global.AbstractAjaxProcessor, {
+	getFields: function () {
+		
+		var priority = this.getParameter('priority');
+		var keywords = this.getParameter('keywords');
+		var email_address1 = this.getParameter('email_address1');
+		var email_address2 = this.getParameter('email_address2');
+		var email_address3 = this.getParameter('email_address3');
+	
+		var priorityGR = new GlideRecord('x_197131_sensiple_notification_keywords');
+		priorityGR.addQuery('priority', '=', priority);
+		priorityGR.query();
+		
+		
+		//var result = this.newItem("result");
+		//result.setAttribute("message","returning all favorites");
+		if (priorityGR.next()) {
+			
+			return false; 
+		}
+		else{
+			var priorityGRinsert1 = new GlideRecord('x_197131_sensiple_notification_keywords');
+			priorityGRinsert1.keywords = keywords;
+			priorityGRinsert1.email_address1 = email_address1;
+			priorityGRinsert1.email_address2 = email_address2;
+			priorityGRinsert1.email_address3 = email_address3;
+			priorityGRinsert1.priority = priority;
+			priorityGRinsert1.insert();
+			return true;
+		}
+			
+    },
+
+    type: 'PriorityValidation'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-04-09 10:51:30</sys_created_on>
+        <sys_id>002a4362db911300506e5ff0cf9619c0</sys_id>
+        <sys_mod_count>34</sys_mod_count>
+        <sys_name>PriorityValidation</sys_name>
+        <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
+        <sys_update_name>sys_script_include_002a4362db911300506e5ff0cf9619c0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-04-09 13:21:11</sys_updated_on>
+    </sys_script_include>
+</record_update>

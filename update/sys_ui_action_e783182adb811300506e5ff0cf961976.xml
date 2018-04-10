@@ -3,7 +3,7 @@
     <sys_ui_action action="INSERT_OR_UPDATE">
         <action_name/>
         <active>true</active>
-        <client>false</client>
+        <client>true</client>
         <comments/>
         <condition/>
         <form_action>true</form_action>
@@ -21,27 +21,66 @@
         <list_save_with_form_button>false</list_save_with_form_button>
         <list_style/>
         <name>Save</name>
-        <onclick/>
+        <onclick>onSubmit()</onclick>
         <order>100</order>
-        <script><![CDATA[var gr= new GlideRecord("x_197131_sensiple_notification_keywords");       
-gr.query();   
-gr.setWorkflow(false); //Don't fire Business rule,notifications 
-//var ga = new GlideAjax('validatePriority') ;
-//ga.addParam('sysparm_name','helloWorld');
-//ga.addParam('sysparm_user_name',"current");
-//ga.getXMLWait(); 
-//alert("ga.getAnswer()");
-//gr.deleteMultiple();
-current.insert();
-
-//var validatePriority = Class.create();
-////validatePriority.prototype = Object.extendsObject(AbstractAjaxProcessor, {
-//helloWorld: function() { 
-	//var current = this.getParameter('sysparm_user_name');
-	//current.insert();
-	//return "true"; 
-//}
-//} );
+        <script><![CDATA[//function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+function onSubmit() {
+	var URL = "https://dev21654.service-now.com/nav_to.do?uri=%2Fx_197131_sensiple_notification_keywords_list.do%3Fsysparm_clear_stack%3Dtrue";	
+	var emailRegex = "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/";
+	var keywords = g_form.getValue('keywords');
+	var email_address1 = g_form.getValue('email_address1');
+	var email_address2 =  g_form.getValue('email_address2');
+	var email_address3 = g_form.getValue('email_address3');
+	var priority = g_form.getValue('priority');
+	var ga = new GlideAjax('PriorityValidation');
+	
+	//var flagKeywords;
+	var flagEmail_1 = false;
+	var flagEmail_2 = false;
+	var flagEmail_3 = false;
+	
+	if(keywords!="" && priority!="" && emailRegex.test(email_address1)){
+		flagEmail_1 = true;
+	}
+	else if(keywords!="" && priority!="" && emailRegex.test(email_address1) && emailRegex.test(email_address2)){
+		flagEmail_2 = true;
+	}
+	else if(keywords!="" && priority!="" && emailRegex.test(email_address1) && emailRegex.test(email_address2)){
+		flagEmail_3 = true;
+	}
+	
+	if(flagEmail_1==true||flagEmail_2==true||flagEmail_3==true){
+			
+		ga.addParam("sysparm_name", "getFields"); 
+		ga.addParam("priority", priority);
+		ga.addParam("keywords", keywords);
+		ga.addParam("email_address1", email_address1);
+		ga.addParam("email_address2", email_address2);
+		ga.addParam("email_address3", email_address3);
+		ga.getXML(GetResponse); 			
+	}else{
+		g_form.showFieldMsg("keywords", "KeyWord Field should not be empty", "error");
+		g_form.showFieldMsg("email_address1", "Email address1 is mandatory ", "error");
+		g_form.showFieldMsg("priority", "Select the priority", "error");		
+	}
+	
+	function GetResponse(response) {
+	  var answer = response.responseXML.documentElement.getAttribute("answer");
+	  
+		if (answer == "false"){
+			//alert('if');
+			//g_form.showFieldMsg("priority", "Hello World", "error");
+			confirm("Selected priority alraedy contain records, you can not insert new one. Please update the existing one.");
+			top.window.location = URL;
+		}		
+		else{		
+			alert('else');
+			confirm("Data inserted successfully!");
+			top.window.location = URL;
+		}
+	}
+	
+}
 
 
 ]]></script>
@@ -55,17 +94,17 @@ current.insert();
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>e783182adb811300506e5ff0cf961976</sys_id>
-        <sys_mod_count>36</sys_mod_count>
+        <sys_mod_count>107</sys_mod_count>
         <sys_name>Save</sys_name>
-        <sys_overrides display_value="Submit">42ec73550a0a0b3400c97002208d0901</sys_overrides>
+        <sys_overrides/>
         <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
         <sys_policy/>
         <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
         <sys_update_name>sys_ui_action_e783182adb811300506e5ff0cf961976</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-06 05:45:38</sys_updated_on>
+        <sys_updated_on>2018-04-10 05:51:57</sys_updated_on>
         <table>x_197131_sensiple_notification_keywords</table>
         <ui11_compatible>true</ui11_compatible>
-        <ui16_compatible>true</ui16_compatible>
+        <ui16_compatible>false</ui16_compatible>
     </sys_ui_action>
 </record_update>
