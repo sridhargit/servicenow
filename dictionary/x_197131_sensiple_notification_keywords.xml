@@ -22,5 +22,8 @@
         <index name="index">
             <element name="priority"/>
         </index>
+        <index name="index2">
+            <element name="priority"/>
+        </index>
     </element>
 </database>
