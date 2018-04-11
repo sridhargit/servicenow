@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element attributes="update_synch=true,no_labels=true,smallTable=true" audit="true" extends="sys_metadata" label="Dictionary Entry" max_length="40" name="sys_dictionary" read_roles="admin" text_index="true" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="vj" max_length="40" name="u_vj" type="string"/>
+    </element>
+</database>
