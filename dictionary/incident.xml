@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <element attributes="email_client=true,query_hints=true,hasWorkflow=true,live_feed=true" audit="true" extends="task" label="Incident" max_length="40" name="incident" sizeclass="99" text_index="true" type="collection">
+    <element attributes="email_client=true,query_hints=true,hasWorkflow=true,live_feed=true" audit="true" extends="task" label="Incident" max_length="40" name="incident" sizeclass="54" text_index="true" type="collection">
         <element display="true" label="CPU Alert Indicator" max_length="40" name="x_197131_sensiple_priority_colour_indicator" type="color"/>
     </element>
 </database>
