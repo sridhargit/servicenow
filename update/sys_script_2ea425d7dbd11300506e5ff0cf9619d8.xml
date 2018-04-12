@@ -6,7 +6,7 @@
         <action_delete>false</action_delete>
         <action_insert>true</action_insert>
         <action_query>false</action_query>
-        <action_update>false</action_update>
+        <action_update>true</action_update>
         <active>true</active>
         <add_message>false</add_message>
         <advanced>true</advanced>
@@ -29,13 +29,32 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
-
-var styleGR = new GlideRecord('sys_ui_style');
-		styleGR.name = "incident";
-		styleGR.element = "x_197131_sensiple_priority_colour_indicator";
-		styleGR.value = 'priority1';
-		styleGR.style = "background-color:red;";		
-		styleGR.insert();
+	
+	var priority = current.getValue('priority');	
+	var tableName = 'incident';
+	var fieldName = 'x_197131_sensiple_priority_colour_indicator';	
+	var colourCode = 'background-color:'+current.getValue('cpu_alert_colour')+';';	
+	
+	var styleGRUpdate = new GlideRecord("sys_ui_style");	
+	styleGRUpdate.addQuery('value', '=', priority);
+	styleGRUpdate.query();
+		
+	if(styleGRUpdate.next()){			
+		
+		//styleGRUpdate.name = tableName;
+		//styleGRUpdate.element = fieldName;
+		styleGRUpdate.value = priority;
+		styleGRUpdate.style = colourCode;
+		styleGRUpdate.update();
+	}
+	else{
+		var styleGRinsert = new GlideRecord("sys_ui_style");
+		styleGRinsert.name = tableName;
+		styleGRinsert.element = fieldName;
+		styleGRinsert.value = priority;
+		styleGRinsert.style = colourCode;		
+		styleGRinsert.insert();
+	}	
 	
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
@@ -44,7 +63,7 @@ var styleGR = new GlideRecord('sys_ui_style');
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>2ea425d7dbd11300506e5ff0cf9619d8</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>36</sys_mod_count>
         <sys_name>Adding Dynamic Styles</sys_name>
         <sys_overrides/>
         <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
@@ -52,7 +71,7 @@ var styleGR = new GlideRecord('sys_ui_style');
         <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
         <sys_update_name>sys_script_2ea425d7dbd11300506e5ff0cf9619d8</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-11 11:35:46</sys_updated_on>
+        <sys_updated_on>2018-04-11 16:23:47</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element label="Configuration" max_length="40" name="x_197131_sensiple_notification_keywords" type="collection">
+        <element choice="1" display="true" label="CPU Alert Colour" mandatory="true" max_length="50" name="cpu_alert_colour" type="string">
+            <choice>
+                <element label="Blue" value="#28C5F7"/>
+                <element label="Orange" value="orange"/>
+                <element label="Red" value="red"/>
+                <element label="Yellow" value="#F7AF28"/>
+            </choice>
+        </element>
         <element label="Email address1" mandatory="true" max_length="50" name="email_address1" type="email"/>
         <element label="Email address2" max_length="50" name="email_address2" type="email"/>
         <element label="Email address3" max_length="50" name="email_address3" type="email"/>
         <element label="Keywords" mandatory="true" max_length="1000" name="keywords" type="string"/>
-        <element choice="3" display="true" label="Priority" mandatory="true" max_length="10" name="priority" type="integer" unique="true">
+        <element choice="3" label="Priority" mandatory="true" max_length="10" name="priority" type="integer">
             <choice>
                 <element label="Priority 01" value="1"/>
                 <element label="Priority 02" value="2"/>
@@ -20,9 +28,6 @@
             </choice>
         </element>
         <index name="index">
-            <element name="priority"/>
-        </index>
-        <index name="index2">
             <element name="priority"/>
         </index>
     </element>
