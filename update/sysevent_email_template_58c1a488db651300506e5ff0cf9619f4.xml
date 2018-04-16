@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysevent_email_template">
+    <sysevent_email_template action="INSERT_OR_UPDATE">
+        <collection>sn_customerservice_case</collection>
+        <email_layout display_value="Demo Layout - Dark">f03ea9717f1312007f005212bdfa919b</email_layout>
+        <message/>
+        <message_html><![CDATA[<p><span style="font-size: 12pt;"><strong><span style="font-family: verdana, geneva;">Dear User ,</span></strong></span></p>
+<p><span style="font-size: 12pt;"><span style="font-family: verdana, geneva;">&nbsp; &nbsp; &nbsp;This is the e-mail to notify that critical CASE-&nbsp;Number: ${number} has been&nbsp;</span>${mail_<a href="script:EmailNotificationScript}">script:EmailCaseScript}</a></span></p>
+<p><span style="font-size: 12pt;">&nbsp;</span></p>
+<p><span style="font-family: verdana, geneva; font-size: 12pt;">Thank you,</span></p>
+<p><span style="font-family: verdana, geneva; font-size: 12pt;">Service Desk</span></p>
+<div>&nbsp;</div>]]></message_html>
+        <message_list/>
+        <message_text/>
+        <name>CaseEmailTemplate</name>
+        <sms_alternate/>
+        <subject>Alert - Critical Case Incident.</subject>
+        <sys_class_name>sysevent_email_template</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-04-13 14:27:29</sys_created_on>
+        <sys_id>58c1a488db651300506e5ff0cf9619f4</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>CaseEmailTemplate</sys_name>
+        <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
+        <sys_update_name>sysevent_email_template_58c1a488db651300506e5ff0cf9619f4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-04-13 14:35:39</sys_updated_on>
+        <sys_version>2</sys_version>
+    </sysevent_email_template>
+</record_update>

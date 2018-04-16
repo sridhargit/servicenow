@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>EmailCaseScript</name>
+        <new_lines_to_html>false</new_lines_to_html>
+        <script><![CDATA[(function runMailScript(/* GlideRecord */ current, /* TemplatePrinter */ template,
+          /* Optional EmailOutbound */ email, /* Optional GlideRecord */ email_action,
+          /* Optional GlideRecord */ event) {
+    var caseGR = new GlideRecord('sn_customerservice_case');
+	caseGR.initialize();
+	var updates = current.sys_mod_count;	
+		 if(updates != 0){
+			 template.print('<span style="font-family:verdana;">UPDATED.</span>');			 
+		 }
+		 else{
+			 template.print('<span style="font-family:verdana;">CREATED.</span>');
+		 }
+		template.print('<span style="font-family:verdana;"><a href="https://dev21654.service-now.com/nav_to.do?uri=%2Fsn_customerservice_case_list.do%3Fsysparm_userpref_module%3D4ddab177c342310015519f2974d3ae87%26sysparm_query%3Dactive%3Dtrue%5Eassigned_to%3Djavascript:getMyAssignments()%5EEQ%26active%3Dtrue%5Eassigned_to%3Djavascript:gs.user_id()%26sysparm_clear_stack%3Dtrue"> CLICK HERE </a>to view the CASE table.</span>');
+	
+})(current, template, email, email_action, event);]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-04-13 14:31:17</sys_created_on>
+        <sys_id>f3b220c8db651300506e5ff0cf9619cc</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>EmailCaseScript</sys_name>
+        <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
+        <sys_update_name>sys_script_email_f3b220c8db651300506e5ff0cf9619cc</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-04-13 14:35:10</sys_updated_on>
+    </sys_script_email>
+</record_update>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element attributes="email_client=true" audit="true" extends="task" label="Case" max_length="40" name="sn_customerservice_case" sizeclass="2" type="collection">
+        <element display="true" label="CPU Alert Indicator" max_length="200" name="x_197131_sensiple_cpu_alert_indicator" type="color"/>
+    </element>
+</database>
