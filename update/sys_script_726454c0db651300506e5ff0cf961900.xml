@@ -37,15 +37,30 @@
 	var emailAddress3;
 	var emailAddresses;
 	var keyword;
+	var description;
+	var splittedDescription;
+	var descriptionValue = false;
+	var shortDescription;
+	var splittedShortDescription;
+	var shortDescriptionFlag;
 	var priority1;
 	var priorities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 	//Queue name 
+	if (current.getValue('description')) {
+		description = current.getValue('description').replace(/[^\w\s]/gi, '').toLowerCase();
+		splittedDescription = description.split(/[ ,]+/);
+		descriptionValue = true;
+	}
 	var queueName = 'x_197131_sensiple.CaseNotificationEvent';	
 	var isNotify = false;
-	var incidentNumber = current.getValue('number');	
-	var shortDescription = current.getValue('short_description').replace(/[^\w\s]/gi, '').toLowerCase();
-	var splittedShortDescription = shortDescription.split(/[ ,]+/);
+	var incidentNumber = current.getValue('number');
+	if(current.getValue('short_description')){
+		shortDescription = current.getValue('short_description').replace(/[^\w\s]/gi, '').toLowerCase();
+		splittedShortDescription = shortDescription.split(/[ ,]+/);
+		shortDescriptionFlag = true;
+	}
+	
 
 	for (var a = 0; a < priorities.length; a++) {
 		var notificationKeywordRecord = new GlideRecord('x_197131_sensiple_notification_keywords');
@@ -58,23 +73,43 @@
 
 				var keywords = notificationKeywordRecord.getValue('keywords').toLowerCase();
 				var splittedWords = keywords.split(/[ ,]+/);
+				if(shortDescriptionFlag){
+					for (var x = 0; x < splittedWords.length; x++) {
+						for (var y = 0; y < splittedShortDescription.length; y++) {
 
-				for (var x = 0; x < splittedWords.length; x++) {
-					for (var y = 0; y < splittedShortDescription.length; y++) {
+							if (splittedWords[x] == splittedShortDescription[y]) {
 
-						if (splittedWords[x] == splittedShortDescription[y]) {
-
-							isNotify = true;
-							keyword = splittedWords[x];
-							priority1 = priority;
-							emailAddress1 = notificationKeywordRecord.getValue('email_address1');
-							emailAddress2 = notificationKeywordRecord.getValue('email_address2');
-							emailAddress3 = notificationKeywordRecord.getValue('email_address3');
-							emailAddresses = emailAddress1 + ", " + emailAddress2 + ", " + emailAddress3;
-							break;
+								isNotify = true;
+								keyword = splittedWords[x];
+								priority1 = priority;
+								emailAddress1 = notificationKeywordRecord.getValue('email_address1');
+								emailAddress2 = notificationKeywordRecord.getValue('email_address2');
+								emailAddress3 = notificationKeywordRecord.getValue('email_address3');
+								emailAddresses = emailAddress1 + ", " + emailAddress2 + ", " + emailAddress3;
+								break;
+							}
 						}
 					}
-				}				
+				}
+				
+				if (descriptionValue) {
+					if (!isNotify) {							
+						for (var i = 0; i < splittedWords.length; i++) {
+							for (var j = 0; j < splittedDescription.length; j++) {
+								if (splittedWords[i] == splittedDescription[j]) {
+									isNotify = true;
+									keyword = splittedWords[i];
+									priority1 = priority;
+									emailAddress1 = notificationKeywordRecord.getValue('email_address1');
+									emailAddress2 = notificationKeywordRecord.getValue('email_address2');
+									emailAddress3 = notificationKeywordRecord.getValue('email_address3');
+									emailAddresses = emailAddress1 + ", " + emailAddress2 + ", " + emailAddress3;
+									break;
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -99,7 +134,7 @@
 		}
 
 		gs.eventQueue(queueName, current, emailAddress1, incidentNumber);
-		gs.addInfoMessage('email1');
+		//gs.addInfoMessage('email1');
 		
 		if (emailAddress2) {
 			gs.addInfoMessage('email2');
@@ -127,7 +162,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>726454c0db651300506e5ff0cf961900</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>Case Notification Filter</sys_name>
         <sys_overrides/>
         <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
@@ -135,7 +170,7 @@
         <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
         <sys_update_name>sys_script_726454c0db651300506e5ff0cf961900</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-16 10:02:37</sys_updated_on>
+        <sys_updated_on>2018-04-16 12:06:40</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

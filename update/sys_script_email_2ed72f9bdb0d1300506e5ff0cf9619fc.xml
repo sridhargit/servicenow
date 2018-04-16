@@ -9,9 +9,8 @@
     var incidentGR = new GlideRecord('incident');
 	incidentGR.initialize();
 	var updates = current.sys_mod_count;	
-		 if(updates != 0){
-			 template.print('<span style="font-family:verdana;">UPDATED.</span>');
-			 
+		 if(updates>1){
+			 template.print('<span style="font-family:verdana;">UPDATED.</span>');			 
 		 }
 		 else{
 			 template.print('<span style="font-family:verdana;">CREATED.</span>');
@@ -23,13 +22,13 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2018-03-30 10:49:05</sys_created_on>
         <sys_id>2ed72f9bdb0d1300506e5ff0cf9619fc</sys_id>
-        <sys_mod_count>16</sys_mod_count>
+        <sys_mod_count>21</sys_mod_count>
         <sys_name>EmailNotificationScript</sys_name>
         <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
         <sys_policy/>
         <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
         <sys_update_name>sys_script_email_2ed72f9bdb0d1300506e5ff0cf9619fc</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-10 12:13:47</sys_updated_on>
+        <sys_updated_on>2018-04-16 11:39:45</sys_updated_on>
     </sys_script_email>
 </record_update>
