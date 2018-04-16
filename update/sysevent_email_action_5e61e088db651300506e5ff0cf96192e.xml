@@ -36,7 +36,7 @@
         <item_table/>
         <mandatory>false</mandatory>
         <message/>
-        <message_html><![CDATA[<p>test</p>]]></message_html>
+        <message_html/>
         <message_list/>
         <message_text/>
         <name>Case Email Notification</name>
@@ -58,7 +58,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>5e61e088db651300506e5ff0cf96192e</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>Case Email Notification</sys_name>
         <sys_overrides/>
         <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
@@ -66,7 +66,7 @@
         <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
         <sys_update_name>sysevent_email_action_5e61e088db651300506e5ff0cf96192e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-16 07:29:24</sys_updated_on>
+        <sys_updated_on>2018-04-16 09:38:37</sys_updated_on>
         <sys_version>2</sys_version>
         <template display_value="CaseEmailTemplate">58c1a488db651300506e5ff0cf9619f4</template>
         <type>email</type>

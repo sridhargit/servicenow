@@ -7,17 +7,17 @@
         <style>background-color:red;</style>
         <sys_class_name>sys_ui_style</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2018-04-16 07:06:54</sys_created_on>
-        <sys_id>f3d912bcdb211300506e5ff0cf96195b</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_created_on>2018-04-16 09:34:17</sys_created_on>
+        <sys_id>3a9b32f84f611300d062b82ca310c797</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>sn_customerservice_case</sys_name>
         <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
         <sys_policy/>
         <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
-        <sys_update_name>sys_ui_style_f3d912bcdb211300506e5ff0cf96195b</sys_update_name>
+        <sys_update_name>sys_ui_style_3a9b32f84f611300d062b82ca310c797</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-16 07:07:25</sys_updated_on>
-        <value>1</value>
+        <sys_updated_on>2018-04-16 09:34:17</sys_updated_on>
+        <value>6</value>
     </sys_ui_style>
-    <sys_translated_text action="delete_multiple" query="documentkey=f3d912bcdb211300506e5ff0cf96195b"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=3a9b32f84f611300d062b82ca310c797"/>
 </record_update>

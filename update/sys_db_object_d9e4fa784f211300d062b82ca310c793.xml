@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_db_object">
+    <sys_db_object action="INSERT_OR_UPDATE">
+        <access/>
+        <actions_access>true</actions_access>
+        <alter_access>true</alter_access>
+        <client_scripts_access>true</client_scripts_access>
+        <configuration_access>false</configuration_access>
+        <create_access>true</create_access>
+        <create_access_controls>false</create_access_controls>
+        <delete_access>false</delete_access>
+        <extension_model/>
+        <is_extendable>false</is_extendable>
+        <label>Case</label>
+        <live_feed_enabled>false</live_feed_enabled>
+        <name>sn_customerservice_case</name>
+        <number_ref/>
+        <provider_class/>
+        <read_access>true</read_access>
+        <super_class display_value="Task" name="task">c07df166b92013006517ce7df7ee46cb</super_class>
+        <sys_class_code/>
+        <sys_class_name>sys_db_object</sys_class_name>
+        <sys_class_path/>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2018-04-16 09:04:58</sys_created_on>
+        <sys_id>d9e4fa784f211300d062b82ca310c793</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Sn Customerservice Case</sys_name>
+        <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
+        <sys_update_name>sys_db_object_d9e4fa784f211300d062b82ca310c793</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2018-04-16 09:04:58</sys_updated_on>
+        <update_access>true</update_access>
+        <user_role/>
+        <ws_access>true</ws_access>
+    </sys_db_object>
+</record_update>

@@ -43,8 +43,7 @@
 	//Queue name 
 	var queueName = 'x_197131_sensiple.CaseNotificationEvent';	
 	var isNotify = false;
-	var incidentNumber = current.getValue('number');
-	
+	var incidentNumber = current.getValue('number');	
 	var shortDescription = current.getValue('short_description').replace(/[^\w\s]/gi, '').toLowerCase();
 	var splittedShortDescription = shortDescription.split(/[ ,]+/);
 
@@ -100,19 +99,23 @@
 		}
 
 		gs.eventQueue(queueName, current, emailAddress1, incidentNumber);
-
+		gs.addInfoMessage('email1');
+		
 		if (emailAddress2) {
+			gs.addInfoMessage('email2');
 			gs.eventQueue(queueName, current, emailAddress2, incidentNumber);
 		}
 		if (emailAddress3) {
+			gs.addInfoMessage('email3');
 			gs.eventQueue(queueName, current, emailAddress3, incidentNumber);
 		}
+		//current.setAbortAction(true);
 	} else {
 		var caseUpdate1 = new GlideRecord("sn_customerservice_case");
 		caseUpdate1.addQuery('number', '=', current.getValue('number'));
 		caseUpdate1.query();
 		while (caseUpdate1.next()) {
-			caseUpdate1.x_197131_sensiple_priority_colour_indicator = " ";
+			caseUpdate1.x_197131_sensiple_cpu_alert_indicator = " ";
 			caseUpdate1.update();
 		}
 	}
@@ -124,7 +127,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>726454c0db651300506e5ff0cf961900</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>Case Notification Filter</sys_name>
         <sys_overrides/>
         <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
@@ -132,9 +135,9 @@
         <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
         <sys_update_name>sys_script_726454c0db651300506e5ff0cf961900</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-16 07:16:41</sys_updated_on>
+        <sys_updated_on>2018-04-16 10:02:37</sys_updated_on>
         <template/>
-        <when>async</when>
+        <when>after</when>
     </sys_script>
     <sys_translated_text action="delete_multiple" query="documentkey=726454c0db651300506e5ff0cf961900"/>
 </record_update>
