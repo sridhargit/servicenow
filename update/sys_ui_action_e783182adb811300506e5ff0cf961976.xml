@@ -23,41 +23,49 @@
         <name>Save</name>
         <onclick>onSubmit()</onclick>
         <order>100</order>
-        <script><![CDATA[    var keywords = current.getValue('keywords');
-	var email_address1 = current.getValue('email_address1');
-	var email_address2 =  current.getValue('email_address2');
-	var email_address3 = current.getValue('email_address3');
-	var priority = current.getValue('priority');
-	var colourCode = current.getValue('cpu_alert_colour');
-	var priorityInTable = "";
-	
-	var priorityGR = new GlideRecord('x_197131_sensiple_notification_keywords');
-		priorityGR.addQuery('priority', '=', priority);
-		priorityGR.query();	
-	
-	if(current.isNewRecord()){
-	gs.addInfoMessage('New');
-		if (priorityGR.next()) {			
-			current.priority.setError("Selected priority already contain records, you can not insert new one. Please update the existing one.");		
+        <script><![CDATA[var keywords = current.getValue('keywords');
+var email_address1 = current.getValue('email_address1');
+var email_address2 = current.getValue('email_address2');
+var email_address3 = current.getValue('email_address3');
+var priority = current.getValue('priority');
+var colourCode = current.getValue('cpu_alert_colour');
+var priorityInTable = "";
+var Sys_id;
+
+var priorityGR = new GlideRecord('x_197131_sensiple_notification_keywords');
+priorityGR.addQuery('priority', '=', priority);
+priorityGR.query();
+
+if (current.isNewRecord()) {
+
+	if (priorityGR.next()) {
+		current.priority.setError("Selected priority already contain records, you can not insert new one. Please update the existing one.");
 		current.setAbortAction(true);
-		}else{			
-			current.insert();			
+	} else {
+		current.insert();
+	}
+} else {
+	while (priorityGR.next()) {
+		Sys_id = priorityGR.sys_id;
+	}
+
+	if (Sys_id == current.sys_id) {
+		current.update();
+
+	} else {
+		var priorityGR1 = new GlideRecord('x_197131_sensiple_notification_keywords');
+		priorityGR1.addQuery('priority', '=', priority);
+		priorityGR1.query();
+		var flag = priorityGR1.next();
+
+		if (flag) {
+			current.priority.setError("Selected priority already contain records, you can not insert new one. Please update the existing one.");
+			current.setAbortAction(true);
+		} else {
+			current.update();
 		}
-	}else{
-		gs.addInfoMessage('update');
-			var priorityGR1 = new GlideRecord('x_197131_sensiple_notification_keywords');
-			priorityGR1.addQuery('priority', '=', priority);
-			priorityGR1.query();			
-			if (priorityGR1.next()) {
-				current.priority.setError("Selected priority already contain records, you can not insert new one. Please update the existing one.");		
-				current.setAbortAction(true);				
-			}
-			else{				
-				current.update();				
-			}
-			
-		}
-	]]></script>
+	}
+}]]></script>
         <show_insert>true</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
@@ -68,7 +76,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>e783182adb811300506e5ff0cf961976</sys_id>
-        <sys_mod_count>155</sys_mod_count>
+        <sys_mod_count>171</sys_mod_count>
         <sys_name>Save</sys_name>
         <sys_overrides/>
         <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
@@ -76,7 +84,7 @@
         <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
         <sys_update_name>sys_ui_action_e783182adb811300506e5ff0cf961976</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-16 10:34:43</sys_updated_on>
+        <sys_updated_on>2018-04-17 08:14:42</sys_updated_on>
         <table>x_197131_sensiple_notification_keywords</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>
