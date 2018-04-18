@@ -6,7 +6,7 @@
                 <element label="Blue" value="#28C5F7"/>
                 <element label="Orange" value="orange"/>
                 <element label="Red" value="red"/>
-                <element label="Yellow" value="#F7AF28"/>
+                <element label="Yellow" value="#C70039"/>
             </choice>
         </element>
         <element label="Email address1" mandatory="true" max_length="50" name="email_address1" type="email"/>

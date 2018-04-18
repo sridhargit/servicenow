@@ -47,14 +47,15 @@
 	var priorities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 	//Queue name 
+	
+	var queueName = 'x_197131_sensiple.CaseNotificationEvent';	
+	var isNotify = false;
+	var incidentNumber = current.getValue('number');
 	if (current.getValue('description')) {
 		description = current.getValue('description').replace(/[^\w\s]/gi, '').toLowerCase();
 		splittedDescription = description.split(/[ ,]+/);
 		descriptionValue = true;
 	}
-	var queueName = 'x_197131_sensiple.CaseNotificationEvent';	
-	var isNotify = false;
-	var incidentNumber = current.getValue('number');
 	if(current.getValue('short_description')){
 		shortDescription = current.getValue('short_description').replace(/[^\w\s]/gi, '').toLowerCase();
 		splittedShortDescription = shortDescription.split(/[ ,]+/);
@@ -85,7 +86,15 @@
 								emailAddress1 = notificationKeywordRecord.getValue('email_address1');
 								emailAddress2 = notificationKeywordRecord.getValue('email_address2');
 								emailAddress3 = notificationKeywordRecord.getValue('email_address3');
-								emailAddresses = emailAddress1 + ", " + emailAddress2 + ", " + emailAddress3;
+								if(emailAddress2 != null){
+										emailAddresses = emailAddress1 + ", " + emailAddress2;
+									}else if(emailAddress3 != null){
+										emailAddresses = emailAddress1 + ", " + emailAddress3;
+									}else if(emailAddress2 != null && emailAddress3 != null){
+										emailAddresses = emailAddress1 + ", " + emailAddress2 + ", " + emailAddress3;
+									}else{
+										emailAddresses = emailAddress1;
+									}
 								break;
 							}
 						}
@@ -105,7 +114,16 @@
 									emailAddress1 = notificationKeywordRecord.getValue('email_address1');
 									emailAddress2 = notificationKeywordRecord.getValue('email_address2');
 									emailAddress3 = notificationKeywordRecord.getValue('email_address3');
-									emailAddresses = emailAddress1 + ", " + emailAddress2 + ", " + emailAddress3;
+									if(emailAddress2 != null){
+										emailAddresses = emailAddress1 + ", " + emailAddress2;
+									}else if(emailAddress3 != null){
+										emailAddresses = emailAddress1 + ", " + emailAddress3;
+									}else if(emailAddress2 != null && emailAddress3 != null){
+										emailAddresses = emailAddress1 + ", " + emailAddress2 + ", " + emailAddress3;
+									}else{
+										emailAddresses = emailAddress1;
+									}
+									
 									break;
 								}
 							}
@@ -122,26 +140,33 @@
 		break;
 	}
 
-	if (isNotify) {
-
-		var notificationLogs = new GlideRecord('x_197131_sensiple_notificationlogs');
-		notificationLogs.incident_number = incidentNumber;
-		notificationLogs.email_addresses = emailAddresses;
-		notificationLogs.short_description = current.getValue('short_description');
-		notificationLogs.keywords = keyword;
-		notificationLogs.caller_id = current.getValue('caller_id');
-		notificationLogs.priority = priority1;
-		notificationLogs.insert();
+	if (isNotify) {	
 
 		var caseUpdate = new GlideRecord("sn_customerservice_case");
 		caseUpdate.addQuery('number', '=', current.getValue('number'));
 		caseUpdate.query();
 		while (caseUpdate.next()) {
 			caseUpdate.x_197131_sensiple_cpu_alert_indicator = priority1;
+			
 			caseUpdate.update();
 		}
-
-		gs.eventQueue(queueName, current, emailAddress1, incidentNumber);
+		
+		var Updates = new GlideRecord("sn_customerservice_case");		
+		Updates.query();
+		var update;		
+		while(Updates.next())
+			update = Updates.sys_mod_count;		
+			
+		if(update==1 || update%2==1){
+			var notificationLogs = new GlideRecord('x_197131_sensiple_notificationlogs');
+			notificationLogs.incident_number = incidentNumber;
+			notificationLogs.email_addresses = emailAddresses;
+			notificationLogs.short_description = current.getValue('short_description');
+			notificationLogs.keywords = keyword;
+			notificationLogs.caller_id = current.getValue('caller_id');
+			notificationLogs.priority = priority1;
+			notificationLogs.insert();
+			gs.eventQueue(queueName, current, emailAddress1, incidentNumber);
 		//gs.addInfoMessage('email1');
 		
 		if (emailAddress2) {
@@ -152,6 +177,9 @@
 			gs.addInfoMessage('email3');
 			gs.eventQueue(queueName, current, emailAddress3, incidentNumber);
 		}
+		}
+		
+		
 		//current.setAbortAction(true);
 	} else {
 		var caseUpdate1 = new GlideRecord("sn_customerservice_case");
@@ -170,7 +198,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>726454c0db651300506e5ff0cf961900</sys_id>
-        <sys_mod_count>12</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_name>Case Notification Filter</sys_name>
         <sys_overrides/>
         <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
@@ -178,7 +206,7 @@
         <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
         <sys_update_name>sys_script_726454c0db651300506e5ff0cf961900</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-04-17 10:21:31</sys_updated_on>
+        <sys_updated_on>2018-04-18 08:50:57</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>
