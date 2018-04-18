@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element label="Configuration" max_length="40" name="x_197131_sensiple_notification_keywords" type="collection">
-        <element choice="1" label="CPU Alert Colour" mandatory="true" max_length="50" name="cpu_alert_colour" type="string">
+        <element choice="1" label="CPU Alert Color" mandatory="true" max_length="50" name="cpu_alert_colour" type="string">
             <choice>
                 <element label="Blue" value="#28C5F7"/>
                 <element label="Orange" value="orange"/>
