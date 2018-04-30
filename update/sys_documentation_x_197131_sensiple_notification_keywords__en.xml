@@ -15,7 +15,7 @@
             <sys_id>5cffd859db051300506e5ff0cf9619f9</sys_id>
             <sys_mod_count>1</sys_mod_count>
             <sys_name>Configuration</sys_name>
-            <sys_package display_value="Kasprev" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
+            <sys_package display_value="Kasprev" source="x_eptds_kasprev">496fd019db051300506e5ff0cf961935</sys_package>
             <sys_policy/>
             <sys_scope display_value="Kasprev">496fd019db051300506e5ff0cf961935</sys_scope>
             <sys_update_name>sys_documentation_x_197131_sensiple_notification_keywords__en</sys_update_name>

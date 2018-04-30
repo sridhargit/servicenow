@@ -26,7 +26,7 @@
         <sys_id>38068f70db611300506e5ff0cf96196d</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Sn Customerservice Case</sys_name>
-        <sys_package display_value="Kasprev" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
+        <sys_package display_value="Kasprev" source="x_eptds_kasprev">496fd019db051300506e5ff0cf961935</sys_package>
         <sys_policy/>
         <sys_scope display_value="Kasprev">496fd019db051300506e5ff0cf961935</sys_scope>
         <sys_update_name>sys_db_object_38068f70db611300506e5ff0cf96196d</sys_update_name>

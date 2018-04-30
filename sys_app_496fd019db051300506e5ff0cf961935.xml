@@ -12,10 +12,10 @@
         <private>false</private>
         <restrict_table_access>false</restrict_table_access>
         <runtime_access_tracking>permissive</runtime_access_tracking>
-        <scope>x_197131_sensiple</scope>
+        <scope>x_eptds_kasprev</scope>
         <scoped_administration>false</scoped_administration>
         <short_description/>
-        <source>x_197131_sensiple</source>
+        <source>x_eptds_kasprev</source>
         <store_correlation_id/>
         <store_url/>
         <sys_class_name>sys_app</sys_class_name>
