@@ -7,9 +7,9 @@
         <sys_id>aef9032cdbd91300506e5ff0cf96192e</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_197131_sensiple_notificationlogs.x_197131_sensiple.user</sys_name>
-        <sys_package display_value="Churn Prevention Utility" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
+        <sys_package display_value="Kasprev" source="x_197131_sensiple">496fd019db051300506e5ff0cf961935</sys_package>
         <sys_policy/>
-        <sys_scope display_value="Churn Prevention Utility">496fd019db051300506e5ff0cf961935</sys_scope>
+        <sys_scope display_value="Kasprev">496fd019db051300506e5ff0cf961935</sys_scope>
         <sys_security_acl display_value="x_197131_sensiple_notificationlogs">66f9032cdbd91300506e5ff0cf96192c</sys_security_acl>
         <sys_update_name>sys_security_acl_role_aef9032cdbd91300506e5ff0cf96192e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
